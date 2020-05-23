@@ -2,6 +2,7 @@ FROM alpine:latest
 LABEL maintainer="https://github.com/onplus"
 
 #ENV VER=v4.20.0
+VER=$(curl --silent https://api.github.com/repos/v2ray/v2ray-core/releases/latest|grep -Po '"tag_name": "\K.*?(?=")')
 
 RUN apk add --no-cache --virtual .build-deps ca-certificates curl \
  && mkdir -m 777 /v2raybin \
